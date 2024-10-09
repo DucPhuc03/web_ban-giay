@@ -22,4 +22,7 @@ public class Order {
     private double total;
     private String status;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

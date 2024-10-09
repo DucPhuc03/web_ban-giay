@@ -16,9 +16,13 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(columnDefinition = "MEDIUMTEXT")
     private String description;
     private double price;
     private int stock;
     private String image_url;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 }
