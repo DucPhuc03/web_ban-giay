@@ -10,15 +10,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "order_details")
+@Table(name = "carts")
 @Entity
-public class OrderDetail {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int quantity;
-    private double price;
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }
