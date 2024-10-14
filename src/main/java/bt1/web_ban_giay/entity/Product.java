@@ -1,10 +1,12 @@
 package bt1.web_ban_giay.entity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -19,15 +21,15 @@ public class Product {
     @Column(columnDefinition = "MEDIUMTEXT")
     private String description;
     private double price;
-    private int stock;
+    private int size;
     private String image_url;
-
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-
     @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
+
+
 
 }

@@ -68,6 +68,7 @@
             <version>1.5.2.Final</version> <!-- Hoặc phiên bản mới nhất -->
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
