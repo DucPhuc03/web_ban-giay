@@ -2,6 +2,7 @@ package bt1.web_ban_giay.controller;
 
 import bt1.web_ban_giay.dto.request.LoginUserDTO;
 import bt1.web_ban_giay.dto.request.UserTokenDTO;
+import bt1.web_ban_giay.dto.response.AccountDTO;
 import bt1.web_ban_giay.dto.response.ResLoginDTO;
 import bt1.web_ban_giay.entity.User;
 import bt1.web_ban_giay.repository.UserRepository;
@@ -16,6 +17,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,12 +57,17 @@ public class AuthController {
 
         // luu cookie
         ResponseCookie responseCookie=ResponseCookie.from("access_token",access_token)
-                .httpOnly(true)
+                .httpOnly(false)
                 .path("/")
                 .secure(true)
                 .maxAge(expriration_cookie)
                 .build();
 
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE,responseCookie.toString()).body(resLoginDTO);
+    }
+
+    @GetMapping("/auth/get/account")
+    public ResponseEntity<AccountDTO> getAccount(){
+        return ResponseEntity.ok(authService.getAccount());
     }
 }

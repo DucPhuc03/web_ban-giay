@@ -37,7 +37,6 @@ public class ProductService {
         mt.setPages(productPage.getTotalPages());
         mt.setTotal(productPage.getTotalElements());
         res.setMeta(mt);
-
         res.setResult(productMapper.tDtoList(productPage.getContent()));
         return res;
     }

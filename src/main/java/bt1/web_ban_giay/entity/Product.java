@@ -21,14 +21,11 @@ public class Product {
     @Column(columnDefinition = "MEDIUMTEXT")
     private String description;
     private double price;
-    private int size;
     private String image_url;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
+
 
 
 
