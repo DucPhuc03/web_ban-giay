@@ -7,5 +7,6 @@ public class ResLoginDTO {
     private Long Id;
     private String username;
     private String email;
+    private  String address;
     private String acces_token;
 }
