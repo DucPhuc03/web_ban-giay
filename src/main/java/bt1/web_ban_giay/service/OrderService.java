@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,6 +58,20 @@ public class OrderService {
     return res;
     }
 
+    public ResOrderDTO updateOrder(Long id){
+        Optional<Order> order=orderRepository.findById(id);
+
+        order.get().setStatus("da thanh toan");
+        Order currentOrder= orderRepository.save(order.get());
+        ResOrderDTO res= new ResOrderDTO(
+                currentOrder.getId(),
+                currentOrder.getOrderDate(),
+                currentOrder.getTotal(),
+                currentOrder.getStatus(),
+                convertToOrderDetail(currentOrder.getOrderDetails())
+        );
+        return res;
+    }
     public List<OrderDetailDTO> convertToOrderDetail(List<OrderDetail> orderDetails){
 
         List<OrderDetailDTO> res= orderDetails.stream().map(item->new OrderDetailDTO(
