@@ -26,6 +26,9 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
 
 
 
