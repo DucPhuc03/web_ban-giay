@@ -1,7 +1,9 @@
 package bt1.web_ban_giay.service;
 
+import bt1.web_ban_giay.dto.response.ResLoginDTO;
 import bt1.web_ban_giay.entity.User;
 import bt1.web_ban_giay.exception.InvalidException;
+import bt1.web_ban_giay.mapper.UserMapper;
 import bt1.web_ban_giay.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,6 +17,8 @@ public class UserService {
     PasswordEncoder passwordEncoder;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    UserMapper userMapper;
     public User createUser(User user) {
         Boolean checkUser=userRepository.existsByUsername(user.getUsername());
         if(checkUser){
@@ -24,12 +28,13 @@ public class UserService {
         user.setPassword(ps);
         return userRepository.save(user);
     }
-    public void updateUser(User user){
+    public ResLoginDTO updateUser(User user){
         Optional<User> userOptional=userRepository.findById(user.getId());
         User userDB=userOptional.get();
         userDB.setUsername(user.getUsername());
         userDB.setPhone(user.getPhone());
         userDB.setAddress(user.getAddress());
-         userRepository.save(userDB);
+        User res= userRepository.save(userDB);
+        return userMapper.toDto(res);
     }
 }

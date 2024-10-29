@@ -1,5 +1,6 @@
 package bt1.web_ban_giay.controller;
 
+import bt1.web_ban_giay.dto.response.ResLoginDTO;
 import bt1.web_ban_giay.entity.User;
 import bt1.web_ban_giay.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class UserController {
     }
 
     @PutMapping("/user/update")
-    public ResponseEntity<Void> updateUser(@RequestBody User user){
-        userService.updateUser(user);
-        return ResponseEntity.ok(null);
+    public ResponseEntity<ResLoginDTO> updateUser(@RequestBody User user){
+
+        return ResponseEntity.ok(userService.updateUser(user));
     }
 }

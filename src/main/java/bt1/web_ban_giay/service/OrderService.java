@@ -5,14 +5,11 @@ import bt1.web_ban_giay.dto.request.ReqOrderDTO;
 import bt1.web_ban_giay.dto.response.ResOrderDTO;
 import bt1.web_ban_giay.entity.Order;
 import bt1.web_ban_giay.entity.OrderDetail;
-import bt1.web_ban_giay.entity.Product;
-import bt1.web_ban_giay.mapper.OrderMapper;
 import bt1.web_ban_giay.mapper.ProductMapper;
 import bt1.web_ban_giay.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 import java.util.Optional;
