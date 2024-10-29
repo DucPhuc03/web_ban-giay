@@ -4,7 +4,9 @@ import bt1.web_ban_giay.dto.request.ReqOrderDTO;
 import bt1.web_ban_giay.dto.response.ResOrderDTO;
 import bt1.web_ban_giay.entity.Order;
 import bt1.web_ban_giay.service.OrderService;
+import com.turkraft.springfilter.boot.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +21,9 @@ public class OrderController {
         return ResponseEntity.ok(orderService.createOrder(orderDTO));
     }
 
-    @GetMapping("/order/get/{id}")
-    public ResponseEntity<List<ResOrderDTO>> getOrder(@PathVariable("id") Long id){
-        return ResponseEntity.ok(orderService.getOrder(id));
+    @GetMapping("/order/get")
+    public ResponseEntity<List<ResOrderDTO>> getOrder( @Filter Specification<Order> spec){
+        return ResponseEntity.ok(orderService.getOrder(spec));
     }
 
     @PutMapping("/order/update/{id}")

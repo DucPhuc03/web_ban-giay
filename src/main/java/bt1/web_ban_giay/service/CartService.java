@@ -22,6 +22,10 @@ public class CartService {
     public Cart addToCart(Cart cart){
         return cartRepsitory.save(cart);
     }
+
+    public void deleteCart(Long id){
+        cartRepsitory.deleteById(id);
+    }
     public List<CartDTO> toDTO(List<Cart> cartList){
         List<CartDTO> res=cartList.stream().map(item->new CartDTO(
                 item.getId(),

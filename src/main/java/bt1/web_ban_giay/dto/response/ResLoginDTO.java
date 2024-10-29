@@ -9,4 +9,5 @@ public class ResLoginDTO {
     private String email;
     private  String address;
     private String acces_token;
+    private String phone;
 }

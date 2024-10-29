@@ -10,6 +10,7 @@ import bt1.web_ban_giay.mapper.OrderMapper;
 import bt1.web_ban_giay.mapper.ProductMapper;
 import bt1.web_ban_giay.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -46,8 +47,8 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public List<ResOrderDTO> getOrder(Long id){
-        List<Order> orderList=orderRepository.findAllByUserId(id);
+    public List<ResOrderDTO> getOrder(Specification<Order> spec){
+        List<Order> orderList=orderRepository.findAll(spec);
         List<ResOrderDTO> res=orderList.stream().map(item->new ResOrderDTO(
                 item.getId(),
                 item.getOrderDate(),

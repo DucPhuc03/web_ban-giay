@@ -55,6 +55,7 @@ public class AuthController {
         resLoginDTO.setEmail(userDB.getEmail());
         resLoginDTO.setAddress(userDB.getAddress());
         resLoginDTO.setAcces_token(access_token);
+        resLoginDTO.setPhone(userDB.getPhone());
 
         // luu cookie
         ResponseCookie responseCookie=ResponseCookie.from("access_token",access_token)
